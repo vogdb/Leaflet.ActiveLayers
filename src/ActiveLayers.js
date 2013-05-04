@@ -51,24 +51,24 @@ L.Control.ActiveLayers = L.Control.Layers.extend({
         var i, input, obj,
             inputs = this._form.getElementsByTagName('input'),
             inputsLen = inputs.length,
-            baseLayer;
+            baseLayer
 
-        this._handlingClick = true;
+        this._handlingClick = true
 
         for (i = 0; i < inputsLen; i++) {
-            input = inputs[i];
-            obj = this._layers[input.layerId];
+            input = inputs[i]
+            obj = this._layers[input.layerId]
 
             if (input.checked && !this._map.hasLayer(obj.layer)) {
-                this._map.addLayer(obj.layer);
+                this._map.addLayer(obj.layer)
                 if (!obj.overlay) {
-                    baseLayer = obj.layer;
+                    baseLayer = obj.layer
                     this._activeBaseLayer = obj
                 } else {
                     this._activeOverlayLayers[input.layerId] = obj
                 }
             } else if (!input.checked && this._map.hasLayer(obj.layer)) {
-                this._map.removeLayer(obj.layer);
+                this._map.removeLayer(obj.layer)
                 if (obj.overlay) {
                     delete this._activeOverlayLayers[input.layerId]
                 }
@@ -76,15 +76,15 @@ L.Control.ActiveLayers = L.Control.Layers.extend({
         }
 
         if (baseLayer) {
-            this._map.setZoom(this._map.getZoom());
-            this._map.fire('baselayerchange', {layer: baseLayer});
+            this._map.setZoom(this._map.getZoom())
+            this._map.fire('baselayerchange', {layer: baseLayer})
         }
 
-        this._handlingClick = false;
+        this._handlingClick = false
     }
 
 })
 
 L.control.activeLayers = function (baseLayers, overlays, options) {
     return new L.Control.ActiveLayers(baseLayers, overlays, options)
-};
+}
