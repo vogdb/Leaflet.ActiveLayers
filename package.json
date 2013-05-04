@@ -1,0 +1,23 @@
+{
+    "name": "Leaflet.ActiveLayers",
+    "version": "0.1.0",
+    "description": "A plugin for the Leaflet library. This plugin adds new L.Control.ActiveLayers with functionality to get currently active layers on the map.",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/vogdb/ActiveLayers.git"
+    },
+    "author": "Sanin Aleksey aka vogdb",
+    "license": [
+        {
+            "type": "MIT"
+        }
+    ],
+    "dependencies": {},
+    "devDependencies": {
+        "grunt-contrib-watch": "~0.3.1",
+        "grunt-contrib-jshint": "~0.3.0",
+        "grunt-contrib-uglify": "~0.2.0",
+        "grunt-contrib-qunit": "~0.2.1",
+        "grunt": "~0.4.1"
+    }
+}
