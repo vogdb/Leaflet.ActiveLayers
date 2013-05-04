@@ -3,46 +3,37 @@
  */
 
 var control
-var map
-var mapnikLayer
 
 module("white box", {
     setup: function () {
-        var attribution = '&copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>'
-
-        mapnikLayer = L.tileLayer(
-            'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-            {attribution: attribution}
-        )
-        var blackAndWhite = L.tileLayer(
-            'http://{s}.www.toolserver.org/tiles/bw-mapnik/{z}/{x}/{y}.png',
-            {attribution: attribution}
-        )
-        var clouds = L.tileLayer('http://{s}.tile.openweathermap.org/map/clouds/{z}/{x}/{y}.png', {
-            attribution: 'Map data &copy; <a href="http://openweathermap.org">OpenWeatherMap</a>',
-            opacity: 0.5
-        })
-
-        map = L.map('map', {
+        var map = L.map('map', {
             center: new L.LatLng(39.73, -104.99),
             zoom: 10,
-            layers: [mapnikLayer, clouds]
+            layers: testLayers.map
         })
 
-        var baseLayers = {
-            'Mapnik': mapnikLayer,
-            'Black and Whilte': blackAndWhite
-        }
-
-        var overlayLayers = {
-            'Clouds': clouds
-        }
-
-        control = L.control.activeLayers(baseLayers, overlayLayers)
+        control = L.control.activeLayers(testLayers.base, testLayers.overlay)
         control.addTo(map)
     }
 })
 
 test("after construction", 1, function () {
-    equal(control.getActiveBaseLayer().name, 'Mapnik')
+    equal(control.getActiveBaseLayer().name, testLayers.mapnik.name)
+})
+
+asyncTest("after click", 1, function () {
+    var blackAndWhiteId = L.stamp(testLayers.blackAndWhite.layer)
+    var inputList = document.getElementsByTagName('input')
+
+    for (var i = 0; i < inputList.length; i++) {
+        var input = inputList[i]
+        if (input.layerId == blackAndWhiteId) {
+            happen.once(input.parentNode, {type: 'click'})
+            setTimeout(function () {
+                equal(control.getActiveBaseLayer().name, testLayers.blackAndWhite.name)
+                start()
+            }, 1000)
+            break
+        }
+    }
 })
