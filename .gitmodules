@@ -1,0 +1,3 @@
+[submodule "submodule/happen"]
+	path = submodule/happen
+	url = git://github.com/tmcw/happen.git
