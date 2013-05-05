@@ -17,23 +17,37 @@ module("white box", {
     }
 })
 
-test("after construction", 1, function () {
+test("after construction", 2, function () {
     equal(control.getActiveBaseLayer().name, testLayers.mapnik.name)
+
+    var cloudsId = L.stamp(testLayers.clouds.layer)
+    equal(
+        control.getActiveOverlayLayers()[cloudsId].name,
+        testLayers.clouds.name
+    )
 })
 
-asyncTest("after click", 1, function () {
+test("after click", 2, function () {
+    stop(2)
     var blackAndWhiteId = L.stamp(testLayers.blackAndWhite.layer)
+    var cloudsId = L.stamp(testLayers.clouds.layer)
     var inputList = document.getElementsByTagName('input')
 
     for (var i = 0; i < inputList.length; i++) {
         var input = inputList[i]
         if (input.layerId == blackAndWhiteId) {
-            happen.once(input.parentNode, {type: 'click'})
+            happen.once(input, {type: 'click'})
             setTimeout(function () {
                 equal(control.getActiveBaseLayer().name, testLayers.blackAndWhite.name)
                 start()
             }, 1000)
-            break
+        }
+        if (input.layerId == cloudsId) {
+            happen.once(input, {type: 'click'})
+            setTimeout(function () {
+                deepEqual(Object.keys(control.getActiveOverlayLayers()).length, 0)
+                start()
+            }, 1000)
         }
     }
 })
