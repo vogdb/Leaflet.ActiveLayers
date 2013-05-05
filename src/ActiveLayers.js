@@ -4,10 +4,18 @@
 
 L.Control.ActiveLayers = L.Control.Layers.extend({
 
+    /**
+     * Get currently active base layer on the map
+     * @return {Object} l where l.name - layer name on the control, l.layer is L.TileLayer, l.overlay is overlay layer.
+     */
     getActiveBaseLayer: function () {
         return this._activeBaseLayer
     },
 
+    /**
+     * Get currently active overlay layers on the map
+     * @return {{layerId: l}} where layerId is <code>L.stamp(l.layer)</code> and l @see #getActiveBaseLayer jsdoc.
+     */
     getActiveOverlayLayers: function () {
         return this._activeOverlayLayers
     },
