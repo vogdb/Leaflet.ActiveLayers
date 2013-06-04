@@ -9,7 +9,7 @@ L.Control.ActiveLayers = L.Control.Layers.extend({
      * @return {Object} l where l.name - layer name on the control, l.layer is L.TileLayer, l.overlay is overlay layer.
      */
     getActiveBaseLayer: function () {
-        return this._activeBaseLayer
+        return this._activeBaseLayer;
     },
 
     /**
@@ -17,24 +17,24 @@ L.Control.ActiveLayers = L.Control.Layers.extend({
      * @return {{layerId: l}} where layerId is <code>L.stamp(l.layer)</code> and l @see #getActiveBaseLayer jsdoc.
      */
     getActiveOverlayLayers: function () {
-        return this._activeOverlayLayers
+        return this._activeOverlayLayers;
     },
 
     onAdd: function (map) {
-        var container = L.Control.Layers.prototype.onAdd.call(this, map)
+        var container = L.Control.Layers.prototype.onAdd.call(this, map);
 
-        this._activeBaseLayer = this._findActiveBaseLayer()
-        this._activeOverlayLayers = this._findActiveOverlayLayers()
-        return container
+        this._activeBaseLayer = this._findActiveBaseLayer();
+        this._activeOverlayLayers = this._findActiveOverlayLayers();
+        return container;
     },
 
     _findActiveBaseLayer: function () {
-        var layers = this._layers
+        var layers = this._layers;
         for (var layerId in layers) {
             if (this._layers.hasOwnProperty(layerId)) {
-                var layer = layers[layerId]
+                var layer = layers[layerId];
                 if (!layer.overlay && this._map.hasLayer(layer.layer)) {
-                    return layer
+                    return layer;
                 }
             }
         }
@@ -42,57 +42,57 @@ L.Control.ActiveLayers = L.Control.Layers.extend({
     },
 
     _findActiveOverlayLayers: function () {
-        var result = {}
-        var layers = this._layers
+        var result = {};
+        var layers = this._layers;
         for (var layerId in layers) {
             if (this._layers.hasOwnProperty(layerId)) {
-                var layer = layers[layerId]
+                var layer = layers[layerId];
                 if (layer.overlay && this._map.hasLayer(layer.layer)) {
-                    result[layerId] = layer
+                    result[layerId] = layer;
                 }
             }
         }
-        return result
+        return result;
     },
 
     _onInputClick: function () {
         var i, input, obj,
             inputs = this._form.getElementsByTagName('input'),
             inputsLen = inputs.length,
-            baseLayer
+            baseLayer;
 
-        this._handlingClick = true
+        this._handlingClick = true;
 
         for (i = 0; i < inputsLen; i++) {
-            input = inputs[i]
-            obj = this._layers[input.layerId]
+            input = inputs[i];
+            obj = this._layers[input.layerId];
 
             if (input.checked && !this._map.hasLayer(obj.layer)) {
-                this._map.addLayer(obj.layer)
+                this._map.addLayer(obj.layer);
                 if (!obj.overlay) {
-                    baseLayer = obj.layer
-                    this._activeBaseLayer = obj
+                    baseLayer = obj.layer;
+                    this._activeBaseLayer = obj;
                 } else {
-                    this._activeOverlayLayers[input.layerId] = obj
+                    this._activeOverlayLayers[input.layerId] = obj;
                 }
             } else if (!input.checked && this._map.hasLayer(obj.layer)) {
-                this._map.removeLayer(obj.layer)
+                this._map.removeLayer(obj.layer);
                 if (obj.overlay) {
-                    delete this._activeOverlayLayers[input.layerId]
+                    delete this._activeOverlayLayers[input.layerId];
                 }
             }
         }
 
         if (baseLayer) {
-            this._map.setZoom(this._map.getZoom())
-            this._map.fire('baselayerchange', {layer: baseLayer})
+            this._map.setZoom(this._map.getZoom());
+            this._map.fire('baselayerchange', {layer: baseLayer});
         }
 
-        this._handlingClick = false
+        this._handlingClick = false;
     }
 
 })
 
 L.control.activeLayers = function (baseLayers, overlays, options) {
-    return new L.Control.ActiveLayers(baseLayers, overlays, options)
+    return new L.Control.ActiveLayers(baseLayers, overlays, options);
 }
