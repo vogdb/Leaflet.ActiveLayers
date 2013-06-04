@@ -91,8 +91,8 @@ L.Control.ActiveLayers = L.Control.Layers.extend({
         this._handlingClick = false;
     }
 
-})
+});
 
 L.control.activeLayers = function (baseLayers, overlays, options) {
     return new L.Control.ActiveLayers(baseLayers, overlays, options);
-}
+};
