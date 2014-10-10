@@ -1,6 +1,6 @@
 {
     "name": "Leaflet.ActiveLayers",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "description": "A plugin for the Leaflet library. This plugin adds new L.Control.ActiveLayers with functionality to get currently active layers on the map.",
     "repository": {
         "type": "git",
