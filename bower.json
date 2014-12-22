@@ -1,0 +1,24 @@
+{
+  "name": "Leaflet.ActiveLayers",
+  "version": "0.1.1",
+  "homepage": "https://github.com/vogdb/Leaflet.ActiveLayers",
+  "authors": [
+    "vogdb"
+  ],
+  "description": "Leaflet - get currently active layers on the map.",
+  "main": "./dist/leaflet.active-layers.min.js",
+  "keywords": [
+    "leaflet",
+    "mapbox"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/bower_components",
+    "test",
+    "tests"
+  ]
+}
+
