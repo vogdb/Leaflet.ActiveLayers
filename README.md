@@ -1,6 +1,14 @@
 # Leaflet.ActiveLayers
 It is a plugin for the Leaflet library. This plugin adds new L.Control.ActiveLayers with functionality to get currently active layers on the map.
 
+## Install
+
+### Bower
+```
+bower install leaflet.activelayers
+```
+
+
 ## Example usage
 
     var attribution = '&copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>'
