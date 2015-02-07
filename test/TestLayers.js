@@ -29,6 +29,20 @@ var TestLayers = function () {
     )
   }
 
+  this.wind = {
+    name:'Wind',
+    layer:L.tileLayer('http://{s}.tile.openweathermap.org/map/wind/{z}/{x}/{y}.png', {
+      attribution:'Map data &copy; <a href="http://openweathermap.org">OpenWeatherMap</a>', opacity:0.5
+    })
+  }
+
+  this.temperature = {
+    name:'Temperature',
+    layer:L.tileLayer('http://{s}.tile.openweathermap.org/map/temp/{z}/{x}/{y}.png', {
+      attribution:'Map data &copy; <a href="http://openweathermap.org">OpenWeatherMap</a>', opacity:0.5
+    })
+  }
+
   this.map = [this.mapnik.layer, this.clouds.layer]
 
   this.base = {}
@@ -37,6 +51,8 @@ var TestLayers = function () {
 
   this.overlay = {}
   this.overlay[this.clouds.name] = this.clouds.layer
+  this.overlay[this.wind.name] = this.wind.layer
+  this.overlay[this.temperature.name] = this.temperature.layer
 }
 
 var testLayers = new TestLayers()
