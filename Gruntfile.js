@@ -2,6 +2,7 @@
 module.exports = function (grunt) {
 
   grunt.initConfig({
+    pkg: grunt.file.readJSON('package.json'),
     jshint: {
       options: {
         curly: true
@@ -42,7 +43,7 @@ module.exports = function (grunt) {
     uglify: {
       dist: {
         src: 'src/ActiveLayers.js'
-        , dest: 'dist/leaflet.active-layers.min.js'
+        , dest: 'dist/<%= pkg.name%>.min.js'
       }
     }
   })
