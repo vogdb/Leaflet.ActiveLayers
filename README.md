@@ -1,6 +1,8 @@
 # Leaflet.ActiveLayers
 It is a plugin for the Leaflet library. This plugin adds new L.Control.ActiveLayers with functionality to get currently active layers on the map.
 
+Supports Leaflet 0.7.x and 1.0+.
+
 ## Install
 
 ### Bower
