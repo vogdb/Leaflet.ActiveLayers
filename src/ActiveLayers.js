@@ -26,7 +26,7 @@ L.Control.ActiveLayers = L.Control.Layers.extend({
   onAdd: function (map) {
     var container = L.Control.Layers.prototype.onAdd.call(this, map)
 
-    if (this._layers instanceof Array) {
+    if (Array.isArray(this._layers)) {
       this._activeBaseLayer = this._findActiveBaseLayer()
       this._activeOverlayLayers = this._findActiveOverlayLayers()
     } else {    // 0.7.x
@@ -110,7 +110,7 @@ L.Control.ActiveLayers = L.Control.Layers.extend({
 
     for (i = 0; i < inputsLen; i++) {
       input = inputs[i]
-      if (this._layers instanceof Array) {
+      if (Array.isArray(this._layers)) {
         obj = this._layers[i]
       } else {
         obj = this._layers[input.layerId]   // 0.7.x
