@@ -1,6 +1,6 @@
 /**
  * Created: vogdb Date: 5/4/13 Time: 1:54 PM
- * Version: 0.3.0
+ * Version: 0.3.1
  */
 
 L.Control.ActiveLayers = L.Control.Layers.extend({
