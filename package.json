@@ -14,7 +14,7 @@
         }
     ],
     "dependencies": {
-      "leaflet": "~1.4"
+      "leaflet": ">0.7"
     },
     "devDependencies": {
         "grunt-contrib-watch": "~0.3.1",
