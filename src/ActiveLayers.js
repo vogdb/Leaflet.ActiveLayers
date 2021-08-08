@@ -1,6 +1,6 @@
 /**
  * Created: vogdb Date: 5/4/13 Time: 1:54 PM
- * Version: 0.3.0
+ * Version: 0.3.1
  */
 
 L.Control.ActiveLayers = L.Control.Layers.extend({
@@ -104,9 +104,14 @@ L.Control.ActiveLayers = L.Control.Layers.extend({
   },
 
   _recountLayers: function () {
-    var i, input, obj,
-      inputs = this._form.getElementsByTagName('input'),
-      inputsLen = inputs.length;
+    var i, input, obj, inputs, inputsLen
+    if (this.hasOwnProperty('_section')) {
+      inputs = this._section.getElementsByTagName('input')
+    } else {
+      // Up until version 1.3.6, Leaflet used _form.
+      inputs = this._form.getElementsByTagName('input')
+    }
+    inputsLen = inputs.length;
 
     for (i = 0; i < inputsLen; i++) {
       input = inputs[i]
