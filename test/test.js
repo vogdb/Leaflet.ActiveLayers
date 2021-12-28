@@ -4,8 +4,8 @@
 
 var control
 
-module("white box", {
-  setup: function () {
+QUnit.module("white box", {
+  beforeEach: function () {
     var map = L.map('map', {
       center: new L.LatLng(39.73, -104.99), zoom: 10, layers: testLayers.map
     })
@@ -15,18 +15,18 @@ module("white box", {
   }
 })
 
-test("after construction", 2, function () {
-  equal(control.getActiveBaseLayer().name, testLayers.mapnik.name)
+QUnit.test("after construction", function(assert) {
+  assert.equal(control.getActiveBaseLayer().name, testLayers.mapnik.name)
 
   var cloudsId = L.stamp(testLayers.clouds.layer)
-  equal(
+  assert.equal(
     control.getActiveOverlayLayers()[cloudsId].name
     , testLayers.clouds.name
   )
 })
 
-test("after click", 2, function () {
-  stop(2)
+QUnit.test("after click", function(assert) {
+  const done = assert.async(2)
   var blackAndWhiteId = L.stamp(testLayers.blackAndWhite.layer)
   var cloudsId = L.stamp(testLayers.clouds.layer)
   var inputList = document.getElementById('map').getElementsByTagName('input')
@@ -36,18 +36,18 @@ test("after click", 2, function () {
     if (!input.layerId) {
       continue;
     }
-    if (blackAndWhiteId == input.layerId) {
+    if (blackAndWhiteId === input.layerId) {
       happen.once(input, {type: 'click'})
       setTimeout(function () {
-        equal(control.getActiveBaseLayer().name, testLayers.blackAndWhite.name)
-        start()
+        assert.equal(control.getActiveBaseLayer().name, testLayers.blackAndWhite.name)
+        done()
       }, 1000)
     }
-    if (cloudsId == input.layerId) {
+    if (cloudsId === input.layerId) {
       happen.once(input, {type: 'click'})
       setTimeout(function () {
-        deepEqual(Object.keys(control.getActiveOverlayLayers()).length, 0)
-        start()
+        assert.deepEqual(Object.keys(control.getActiveOverlayLayers()).length, 0)
+        done()
       }, 1000)
     }
   }

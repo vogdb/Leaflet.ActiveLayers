@@ -1,27 +1,29 @@
 {
     "name": "leaflet.active-layers",
-    "version": "0.3.1",
+    "version": "0.3.2",
     "description": "A plugin for the Leaflet library. This plugin adds new L.Control.ActiveLayers with functionality to get currently active layers on the map.",
+    "scripts": {
+        "test": "node-qunit-phantomjs test/index.html",
+        "dev": "webpack --watch --mode=development",
+        "release": "npm run test && webpack --mode=production"
+    },
     "repository": {
         "type": "git",
         "url": "https://github.com/vogdb/ActiveLayers.git"
     },
-    "author": "Sanin Aleksey aka vogdb",
-    "license": [
-        {
-            "type": "MIT",
-            "url": "https://github.com/vogdb/Leaflet.ActiveLayers/blob/master/MIT-LICENSE.txt"
-        }
-    ],
+    "author": "vogdb",
+    "license": {
+        "type": "MIT",
+        "url": "https://github.com/vogdb/Leaflet.ActiveLayers/blob/master/MIT-LICENSE.txt"
+    },
     "dependencies": {
-      "leaflet": ">0.7"
+        "leaflet": "^1.7.1"
     },
     "devDependencies": {
-        "grunt-contrib-watch": "~0.3.1",
-        "grunt-contrib-jshint": "~0.3.0",
-        "grunt-contrib-uglify": "~0.2.0",
-        "grunt-contrib-qunit": "~0.2.1",
-        "grunt": ">=1.3.0",
-        "happen": "~0.1.2"
+        "happen": "^0.3.2",
+        "node-qunit-phantomjs": "^2.1.1",
+        "qunit": "^2.17.2",
+        "webpack": "^5.65.0",
+        "webpack-cli": "^4.9.1"
     }
 }

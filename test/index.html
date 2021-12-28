@@ -1,19 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-US">
 <head>
     <meta charset="utf-8">
     <title>QUnit Tests</title>
-    <link rel="stylesheet" href="../node_modules/grunt-contrib-qunit/test/libs/qunit.css">
-    <script src="../node_modules/grunt-contrib-qunit/test/libs/qunit.js"></script>
+    <link rel="stylesheet" href="../node_modules/qunit/qunit/qunit.css">
     <link rel="stylesheet" href="../node_modules/leaflet/dist/leaflet.css"/>
-    <script src="../node_modules/leaflet/dist/leaflet.js"></script>
-
-    <script src="../src/ActiveLayers.js"></script>
-    <script src="../node_modules/happen/happen.js"></script>
-    <script src="TestLayers.js"></script>
-    <script src="test.js"></script>
-
-    <style>
+   <style>
         #map {
             width: 100%;
             height: 100%;
@@ -26,5 +18,11 @@
 <div id="qunit-fixture">
     <div id="map"></div>
 </div>
+<script src="../node_modules/qunit/qunit/qunit.js"></script>
+<script src="../node_modules/leaflet/dist/leaflet.js"></script>
+<script src="../src/ActiveLayers.js"></script>
+<script src="../node_modules/happen/happen.js"></script>
+<script src="TestLayers.js"></script>
+<script src="test.js"></script>
 </body>
 </html>
