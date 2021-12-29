@@ -3,15 +3,9 @@ It is a plugin for the Leaflet library. This plugin adds new L.Control.ActiveLay
 
 Supports Leaflet 0.7.x and 1.0+.
 
-## Install
-
-### Bower
-```
-bower install leaflet.activelayers
-```
-
 
 ## Example usage
+Also see [example.html](example.html)
 
     var attribution = '&copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>'
 
